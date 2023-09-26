@@ -29,6 +29,7 @@ public class OnPreCommitMojo extends AbstractModuleMavenGitCodeFormatMojo {
   }
 
   private boolean isFormattable(Path path) {
-    return sourceDirs().stream().anyMatch(path::startsWith);
+    String absolutePath = path.toString();
+    return absolutePath.contains("src/main/java") || absolutePath.contains("src/test/java");
   }
 }
